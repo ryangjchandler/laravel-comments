@@ -3,6 +3,7 @@
 namespace RyanChandler\Comments\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Schema;
 use Orchestra\Testbench\TestCase as Orchestra;
 use RyanChandler\Comments\CommentsServiceProvider;
 
@@ -27,5 +28,13 @@ class TestCase extends Orchestra
     public function getEnvironmentSetUp($app)
     {
         config()->set('database.default', 'testing');
+
+        $migration = require __DIR__ . '/../database/migrations/create_comments_table.php';
+        $migration->up();
+    }
+
+    protected function defineDatabaseMigrations()
+    {
+        $this->loadLaravelMigrations();
     }
 }

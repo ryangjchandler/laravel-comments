@@ -12,14 +12,15 @@ use RyanChandler\Comments\Contracts\IsComment;
  */
 trait HasComments
 {
+    /** @return MorphMany<IsComment> */
     public function comments(): MorphMany
     {
         return $this->morphMany(config('comments.model'), 'commentable');
     }
 
-    public function comment(string $content, Model $user = null, IsComment $parent = null): void
+    public function comment(string $content, Model $user = null, IsComment $parent = null): IsComment
     {
-        $this->comments()->create([
+        return $this->comments()->create([
             'content' => $content,
             'user_id' => $user ? $user->getKey() : Auth::id(),
             'parent_id' => $parent?->getKey(),
