@@ -1,5 +1,9 @@
 <?php
-// config for RyanChandler/LaravelComments
+
 return [
+
+    'model' => \RyanChandler\Comments\Models\Comment::class,
+
+    'user' => \App\Models\User::class,
 
 ];

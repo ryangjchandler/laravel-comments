@@ -1,10 +1,10 @@
 <?php
 
-namespace RyanChandler\LaravelComments\Tests;
+namespace RyanChandler\Comments\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use RyanChandler\LaravelComments\LaravelCommentsServiceProvider;
+use RyanChandler\Comments\CommentsServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -13,24 +13,19 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'RyanChandler\\LaravelComments\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'RyanChandler\\Comments\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 
     protected function getPackageProviders($app)
     {
         return [
-            LaravelCommentsServiceProvider::class,
+            CommentsServiceProvider::class,
         ];
     }
 
     public function getEnvironmentSetUp($app)
     {
         config()->set('database.default', 'testing');
-
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_laravel-comments_table.php.stub';
-        $migration->up();
-        */
     }
 }

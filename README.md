@@ -55,7 +55,7 @@ php artisan vendor:publish --tag="laravel-comments-views"
 ## Usage
 
 ```php
-$laravelComments = new RyanChandler\LaravelComments();
+$laravelComments = new RyanChandler\Comments();
 echo $laravelComments->echoPhrase('Hello, RyanChandler!');
 ```
 
