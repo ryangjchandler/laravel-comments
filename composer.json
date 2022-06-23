@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "ryangjchandler/laravel-comments",
+    "description": "A dead-simple comments package for Laravel.",
     "keywords": [
-        ":vendor_name",
+        "ryangjchandler",
         "laravel",
-        ":package_slug"
+        "laravel-comments"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/ryangjchandler/laravel-comments",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Ryan Chandler",
+            "email": "support@ryangjchandler.co.uk",
             "role": "Developer"
         }
     ],
@@ -35,13 +35,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "RyanChandler\\LaravelComments\\": "src",
+            "RyanChandler\\LaravelComments\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "RyanChandler\\LaravelComments\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -56,10 +56,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "RyanChandler\\LaravelComments\\LaravelCommentsServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "LaravelComments": "RyanChandler\\LaravelComments\\Facades\\LaravelComments"
             }
         }
     },

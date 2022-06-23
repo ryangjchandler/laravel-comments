@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace RyanChandler\LaravelComments\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class LaravelCommentsCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-comments';
 
     public $description = 'My command';
 
