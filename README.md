@@ -1,6 +1,3 @@
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/support-ukraine.svg?t=1" />](https://supportukrainenow.org)
-
 # A dead-simple comments package for Laravel.
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/ryangjchandler/laravel-comments.svg?style=flat-square)](https://packagist.org/packages/ryangjchandler/laravel-comments)
@@ -8,28 +5,21 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/ryangjchandler/laravel-comments/Check%20&%20fix%20styling?label=code%20style)](https://github.com/ryangjchandler/laravel-comments/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/ryangjchandler/laravel-comments.svg?style=flat-square)](https://packagist.org/packages/ryangjchandler/laravel-comments)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+This package provides an incredibly simple comment system for your Laravel applications.
 
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-comments.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-comments)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+> If you're looking for a package with UI components, I highly recommend using [Spatie's `laravel-comments`](https://laravel-comments.com/) package which comes with Livewire support out of the box.
 
 ## Installation
 
-You can install the package via composer:
+You can install the package via Composer:
 
 ```bash
 composer require ryangjchandler/laravel-comments
 ```
 
-You can publish and run the migrations with:
+The package automatically registers migrations so there's no need to publish anything, just run them.
 
-```bash
-php artisan vendor:publish --tag="laravel-comments-migrations"
+```
 php artisan migrate
 ```
 
@@ -43,20 +33,45 @@ This is the contents of the published config file:
 
 ```php
 return [
+
+    'model' => \RyanChandler\Comments\Models\Comment::class,
+
+    'user' => \App\Models\User::class,
+
 ];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="laravel-comments-views"
 ```
 
 ## Usage
 
+Start by using the `RyanChandler\Comments\Concerns\HasComments` trait on your model.
+
 ```php
-$laravelComments = new RyanChandler\Comments();
-echo $laravelComments->echoPhrase('Hello, RyanChandler!');
+use RyanChandler\Comments\Concerns\HasComments;
+
+class Post extends Model
+{
+    use HasComments;
+}
+```
+
+This trait adds a `comments(): MorphMany` relationship on your model. It also adds a new `comment()` method that can be used to quickly add a comment to your model.
+
+```php
+$post = Post::first();
+
+$post->comment('Hello, world!');
+```
+
+By default, the package will use the authenticated user's ID as the "commentor". You can customise this by providing a custom `User` to the `comment()` method.
+
+```php
+$post->comment('Hello, world!', user: User::first());
+```
+
+The package also supports `parent -> children` relationships for comments. This means that a comment can `belongTo` another comment.
+
+```php
+$post->comment('Thanks for commenting!', parent: Comment::find(2));
 ```
 
 ## Testing
