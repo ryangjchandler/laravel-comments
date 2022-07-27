@@ -4,10 +4,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Schema;
-use Orchestra\Testbench\Factories\UserFactory;
-use RyanChandler\Comments\Concerns\HasComments;
 
 use function Pest\Laravel\assertDatabaseHas;
+
+use RyanChandler\Comments\Concerns\HasComments;
 
 class Post extends Model
 {
