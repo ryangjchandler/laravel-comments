@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-comments` will be documented in this file.
 
+## v1.1.0 - 2026-03-19
+
+### What's Changed
+
+* Update dependencies by @ryangjchandler in https://github.com/ryangjchandler/laravel-comments/pull/21
+
+**Full Changelog**: https://github.com/ryangjchandler/laravel-comments/compare/v1.0.0...v1.1.0
+
 ## v1.0.0 - 2024-03-12
 
 * Support for Laravel 11.x
