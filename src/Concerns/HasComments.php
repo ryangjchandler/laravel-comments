@@ -18,7 +18,7 @@ trait HasComments
         return $this->morphMany(config('comments.model'), 'commentable');
     }
 
-    public function comment(string $content, Model $user = null, IsComment $parent = null): IsComment
+    public function comment(string $content, ?Model $user = null, ?IsComment $parent = null): IsComment
     {
         return $this->comments()->create([
             'content' => $content,
